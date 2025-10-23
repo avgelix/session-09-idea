@@ -1,11 +1,15 @@
 :root{
-  --bg:#0f1724;
-  --card:#0b1220;
-  --muted:#9aa4b2;
-  --accent:#6ee7b7;
+  /* palette chosen for clarity and data accents */
+  --bg: #071223;
+  --surface: #071927;
+  --card: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #6ee7b7; /* mint */
+  --accent-2: #5fd3ff; /* cyan */
   --glass: rgba(255,255,255,0.03);
   --max-width:1100px;
   --radius:12px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
   color-scheme: dark;
 }
 
@@ -13,8 +17,8 @@
 html,body{height:100%}
 body{
   margin:0;
-  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg,#071223 0%, #071825 100%);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1000px 400px at 10% 10%, rgba(95,211,255,0.04), transparent), linear-gradient(180deg,#071223 0%, #071825 100%);
   color:#e6eef6;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -24,7 +28,8 @@ body{
 .container{max-width:var(--max-width);margin:0 auto;padding:1.5rem;}
 
 .site-header{border-bottom:1px solid rgba(255,255,255,0.04);background:transparent;}
-.brand{margin:0;font-size:1rem;letter-spacing:0.6px}
+.brand{margin:0;font-size:1rem;letter-spacing:0.6px;display:flex;align-items:center;gap:0.6rem}
+.brand .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;color:#022;font-weight:700}
 .nav{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
 .nav a{color:var(--muted);text-decoration:none;font-size:0.95rem}
 .hero{padding:3.5rem 0}
@@ -47,8 +52,20 @@ body{
 .projects a{color:var(--accent);text-decoration:none}
 
 .site-footer{padding:1.5rem 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);margin-top:2rem}
+/* --- Data visualization styles --- */
+.viz-panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:grid;grid-template-columns:1fr;gap:0.75rem}
+.viz-controls{display:flex;gap:0.5rem;align-items:center;margin-bottom:0.5rem}
+.viz-canvas{position:relative;background:linear-gradient(180deg, rgba(5,10,15,0.2), transparent);padding:0.75rem;border-radius:8px}
+#bar-chart{width:100%;height:260px;display:block}
+svg rect.bar{fill: url(#barGradient);rx:6;cursor:pointer;transform-origin: center bottom;transition: transform 600ms cubic-bezier(.2,.9,.24,1), opacity 200ms}
+svg rect.bar:hover{opacity:0.92;filter:brightness(1.06)}
+.tooltip{position:absolute;pointer-events:none;background:rgba(2,34,44,0.96);color:#dff7ef;padding:0.45rem 0.6rem;border-radius:6px;font-size:0.85rem;transform:translate(-50%,-110%);white-space:nowrap;opacity:0;transition:opacity 180ms}
+
+/* small utilities */
+.small{font-size:0.9rem;color:var(--muted)}
 
 @media (max-width:860px){
   .hero-grid{grid-template-columns:1fr;gap:1rem}
   .hero-card{order:2}
+  #bar-chart{height:200px}
 }
