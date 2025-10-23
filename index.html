@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Angela Petrone — Product Designer</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Angela Petrone — Product Designer. MA in Human-Computer Interaction. Portfolio, skills, and contact." />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <h1 class="brand">Angela Petrone</h1>
+      <nav aria-label="Main navigation">
+        <ul class="nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h2 id="hero-title">Product Designer</h2>
+          <p class="subtitle">MA in Human‑Computer Interaction</p>
+          <p class="lead">I design human-centred digital products that balance user needs, business goals, and technical constraints. I focus on research-led interfaces, intuitive interactions, and accessible experiences.</p>
+          <p class="actions">
+            <a class="btn primary" href="#work">View portfolio</a>
+            <a class="btn" href="/resume-Angela-Petrone.pdf" download>Download resume</a>
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Profile summary">
+          <div class="avatar" aria-hidden="true">AP</div>
+          <ul class="meta">
+            <li><strong>Role:</strong> Product Designer</li>
+            <li><strong>Degree:</strong> MA, Human‑Computer Interaction</li>
+            <li><strong>Focus:</strong> UX research, interaction design, prototyping</li>
+            <li><strong>Location:</strong> Remote / Open to relocation</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="container section">
+      <h3>About</h3>
+      <p>I blend user research and iterative design to create products people love. My process includes stakeholder alignment, usability testing, and high‑fidelity prototypes that are handed off with clear specs for engineers.</p>
+    </section>
+
+    <section id="work" class="container section">
+      <h3>Selected work</h3>
+      <p>Link to portfolio items or case studies. Replace these placeholders with real project pages.</p>
+      <ul class="projects">
+        <li><a href="#">Project — Improving onboarding flow</a></li>
+        <li><a href="#">Project — Designing accessible dashboards</a></li>
+        <li><a href="#">Project — Mobile app interaction patterns</a></li>
+      </ul>
+    </section>
+
+    <section id="contact" class="container section">
+      <h3>Contact</h3>
+      <p>Get in touch: <a href="mailto:angela@example.com">angela@example.com</a></p>
+      <p class="small">Connect: <a href="#" aria-label="LinkedIn">LinkedIn</a> · <a href="#" aria-label="Twitter">Twitter</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© <span id="year"></span> Angela Petrone — Product Designer</p>
+    </div>
+  </footer>
+
+  <script>
+    // small script to set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
