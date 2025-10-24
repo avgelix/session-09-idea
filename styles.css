@@ -37,6 +37,9 @@ body{
 .nav{list-style:none;padding:0;margin:0;display:flex;gap:1rem}
 .nav a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.95rem;padding:0.4rem 0.3rem;border-radius:8px;transition:background 180ms,color 160ms}
 .nav a:hover{background:linear-gradient(90deg, rgba(122,107,255,0.06), rgba(255,107,107,0.04));color:#fff}
+
+/* header scrolled state */
+.site-header.scrolled{position:sticky;top:0;backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(11,12,20,0.5), rgba(11,12,20,0.35));box-shadow:0 6px 30px rgba(4,8,18,0.5);transform:translateZ(0)}
 .hero{padding:3.5rem 0}
 .hero-grid{display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:start}
 .hero-text h2{margin:0;font-size:2.25rem;letter-spacing:-0.4px}

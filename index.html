@@ -109,8 +109,9 @@
     // small script to set year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="scripts.js" defer></script>
   <script>
-    // Simple interactive SVG bar chart demo
+    // Simple interactive SVG bar chart demo (kept inline for simplicity)
     (function(){
       const svg = document.getElementById('bar-chart');
       const tooltip = document.getElementById('tooltip');
@@ -121,8 +122,8 @@
         const grad = document.createElementNS(xmlns,'linearGradient');
         grad.setAttribute('id','barGradient');
         grad.setAttribute('x1','0'); grad.setAttribute('y1','0'); grad.setAttribute('x2','1'); grad.setAttribute('y2','1');
-        const s1 = document.createElementNS(xmlns,'stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','#6ee7b7');
-        const s2 = document.createElementNS(xmlns,'stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color','#5fd3ff');
+        const s1 = document.createElementNS(xmlns,'stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color',getComputedStyle(document.documentElement).getPropertyValue('--accent-2') || '#6ee7b7');
+        const s2 = document.createElementNS(xmlns,'stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color',getComputedStyle(document.documentElement).getPropertyValue('--accent-3') || '#5fd3ff');
         grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svg.appendChild(defs);
       }
 
@@ -158,11 +159,6 @@
           rect.addEventListener('mouseenter', (evt)=>{
             const v = evt.target.getAttribute('data-value');
             tooltip.textContent = v;
-            const rectBox = svg.getBoundingClientRect();
-            const cx = rectBox.left + x + barW/2;
-            const cy = rectBox.top + y;
-            tooltip.style.left = cx + 'px';
-            tooltip.style.top = cy + 'px';
             tooltip.style.opacity = '1';
           });
           rect.addEventListener('mouseleave', ()=>{ tooltip.style.opacity = '0'; });
