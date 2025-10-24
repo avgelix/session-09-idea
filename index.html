@@ -27,7 +27,7 @@
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
-        <div class="hero-text">
+  <div class="hero-text reveal">
           <h2 id="hero-title">Product Designer</h2>
           <p class="subtitle">MS in Human‑Computer Interaction</p>
           <p class="lead">I design human-centred digital products that balance user needs, business goals, and technical constraints. I focus on research-led interfaces, intuitive interactions, and accessible experiences.</p>
@@ -37,7 +37,7 @@
           </p>
         </div>
 
-        <aside class="hero-card" aria-label="Profile summary">
+  <aside class="hero-card reveal" aria-label="Profile summary">
           <div class="avatar" aria-hidden="true">AP</div>
           <ul class="meta">
             <li><strong>Role:</strong> Product Designer</li>
@@ -171,93 +171,5 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   <script src="scripts.js" defer></script>
-  <script>
-    // Simple interactive SVG bar chart demo (kept inline for simplicity)
-    (function(){
-      const svg = document.getElementById('bar-chart');
-      const tooltip = document.getElementById('tooltip');
-
-      function makeDefs(){
-        const xmlns = 'http://www.w3.org/2000/svg';
-        const defs = document.createElementNS(xmlns,'defs');
-        const grad = document.createElementNS(xmlns,'linearGradient');
-        grad.setAttribute('id','barGradient');
-        grad.setAttribute('x1','0'); grad.setAttribute('y1','0'); grad.setAttribute('x2','1'); grad.setAttribute('y2','1');
-        const s1 = document.createElementNS(xmlns,'stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color',getComputedStyle(document.documentElement).getPropertyValue('--accent-2') || '#6ee7b7');
-        const s2 = document.createElementNS(xmlns,'stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color',getComputedStyle(document.documentElement).getPropertyValue('--accent-3') || '#5fd3ff');
-        grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svg.appendChild(defs);
-      }
-
-      function draw(data){
-        while(svg.firstChild) svg.removeChild(svg.firstChild);
-        makeDefs();
-        const xmlns = 'http://www.w3.org/2000/svg';
-        const padding = {t:20,r:20,b:30,l:36};
-        const width = svg.viewBox.baseVal.width || 600;
-        const height = svg.viewBox.baseVal.height || 300;
-        const innerW = width - padding.l - padding.r;
-        const innerH = height - padding.t - padding.b;
-        const max = Math.max(...data);
-        const barW = innerW / data.length * 0.7;
-        const gap = innerW / data.length * 0.3;
-
-        data.forEach((d,i)=>{
-          const x = padding.l + i * (barW + gap) + gap/2;
-          const h = (d / max) * innerH;
-          const y = padding.t + (innerH - h);
-          const rect = document.createElementNS(xmlns,'rect');
-          rect.setAttribute('x', x);
-          rect.setAttribute('y', y);
-          rect.setAttribute('width', barW);
-          rect.setAttribute('height', h);
-          rect.setAttribute('class','bar');
-          rect.setAttribute('data-value', d);
-          // animate via scaleY
-          rect.style.transform = 'scaleY(0)';
-          rect.style.transformOrigin = 'center bottom';
-          svg.appendChild(rect);
-
-          rect.addEventListener('mouseenter', (evt)=>{
-            const v = evt.target.getAttribute('data-value');
-            tooltip.textContent = v;
-            tooltip.style.opacity = '1';
-          });
-          rect.addEventListener('mouseleave', ()=>{ tooltip.style.opacity = '0'; });
-          // small click demo
-          rect.addEventListener('click', ()=>{ rect.classList.toggle('selected'); });
-        });
-
-        // labels (x axis)
-        const axisY = document.createElementNS(xmlns,'line');
-        axisY.setAttribute('x1', padding.l); axisY.setAttribute('x2', padding.l+innerW);
-        axisY.setAttribute('y1', padding.t+innerH+6); axisY.setAttribute('y2', padding.t+innerH+6);
-        axisY.setAttribute('stroke','rgba(255,255,255,0.05)'); axisY.setAttribute('stroke-width','1');
-        svg.appendChild(axisY);
-
-        // trigger animation
-        requestAnimationFrame(()=>{
-          const rects = svg.querySelectorAll('rect.bar');
-          rects.forEach((r,idx)=>{
-            // stagger
-            setTimeout(()=>{ r.style.transform = 'scaleY(1)'; }, idx*80);
-          });
-        });
-      }
-
-      // sample data and controls
-      let data = [34, 67, 23, 78, 45, 90, 55];
-      draw(data);
-
-      document.getElementById('randomize').addEventListener('click', ()=>{
-        data = data.map(()=> Math.round(Math.random()*100));
-        draw(data);
-      });
-      document.getElementById('update').addEventListener('click', ()=>{
-        // small update to show transitions
-        data = data.map(v => Math.max(8, Math.round(v + (Math.random()*30-15))));
-        draw(data);
-      });
-    })();
-  </script>
 </body>
 </html>

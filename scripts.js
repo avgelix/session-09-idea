@@ -61,6 +61,77 @@ document.addEventListener('DOMContentLoaded', () => {
   const svg = document.getElementById('bar-chart');
   const tooltip = document.getElementById('tooltip');
   if (svg && tooltip) {
+    // Chart rendering moved here from inline HTML for separation of concerns
+    function makeDefsLocal(svgEl){
+      const xmlns = 'http://www.w3.org/2000/svg';
+      const defs = document.createElementNS(xmlns,'defs');
+      const grad = document.createElementNS(xmlns,'linearGradient');
+      grad.setAttribute('id','barGradient');
+      grad.setAttribute('x1','0'); grad.setAttribute('y1','0'); grad.setAttribute('x2','1'); grad.setAttribute('y2','1');
+      const s1 = document.createElementNS(xmlns,'stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color',getComputedStyle(document.documentElement).getPropertyValue('--accent-2') || '#6ee7b7');
+      const s2 = document.createElementNS(xmlns,'stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color',getComputedStyle(document.documentElement).getPropertyValue('--accent-3') || '#5fd3ff');
+      grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svgEl.appendChild(defs);
+    }
+
+    function drawChart(svgEl, data){
+      while(svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+      makeDefsLocal(svgEl);
+      const xmlns = 'http://www.w3.org/2000/svg';
+      const padding = {t:20,r:20,b:30,l:36};
+      const width = svgEl.viewBox.baseVal.width || 600;
+      const height = svgEl.viewBox.baseVal.height || 300;
+      const innerW = width - padding.l - padding.r;
+      const innerH = height - padding.t - padding.b;
+      const max = Math.max(...data);
+      const barW = innerW / data.length * 0.7;
+      const gap = innerW / data.length * 0.3;
+
+      data.forEach((d,i)=>{
+        const x = padding.l + i * (barW + gap) + gap/2;
+        const h = (d / max) * innerH;
+        const y = padding.t + (innerH - h);
+        const rect = document.createElementNS(xmlns,'rect');
+        rect.setAttribute('x', x);
+        rect.setAttribute('y', y);
+        rect.setAttribute('width', barW);
+        rect.setAttribute('height', h);
+        rect.setAttribute('class','bar');
+        rect.setAttribute('data-value', d);
+        rect.style.transform = 'scaleY(0)';
+        rect.style.transformOrigin = 'center bottom';
+        svgEl.appendChild(rect);
+
+        rect.addEventListener('mouseenter', (evt)=>{
+          const v = evt.target.getAttribute('data-value');
+          tooltip.textContent = v;
+          tooltip.style.opacity = '1';
+        });
+        rect.addEventListener('mouseleave', ()=>{ tooltip.style.opacity = '0'; });
+        rect.addEventListener('click', ()=>{ rect.classList.toggle('selected'); });
+      });
+
+      const axisY = document.createElementNS(xmlns,'line');
+      axisY.setAttribute('x1', padding.l); axisY.setAttribute('x2', padding.l+innerW);
+      axisY.setAttribute('y1', padding.t+innerH+6); axisY.setAttribute('y2', padding.t+innerH+6);
+      axisY.setAttribute('stroke','rgba(255,255,255,0.05)'); axisY.setAttribute('stroke-width','1');
+      svgEl.appendChild(axisY);
+
+      requestAnimationFrame(()=>{
+        const rects = svgEl.querySelectorAll('rect.bar');
+        rects.forEach((r,idx)=>{
+          setTimeout(()=>{ r.style.transform = 'scaleY(1)'; }, idx*80);
+        });
+      });
+    }
+
+    // sample data and controls
+    let chartData = [34, 67, 23, 78, 45, 90, 55];
+    drawChart(svg, chartData);
+    const randomBtn = document.getElementById('randomize');
+    const updateBtn = document.getElementById('update');
+    if (randomBtn) randomBtn.addEventListener('click', ()=>{ chartData = chartData.map(()=> Math.round(Math.random()*100)); drawChart(svg, chartData); });
+    if (updateBtn) updateBtn.addEventListener('click', ()=>{ chartData = chartData.map(v => Math.max(8, Math.round(v + (Math.random()*30-15)))); drawChart(svg, chartData); });
+
     svg.addEventListener('mousemove', (e) => {
       // position tooltip near cursor but keep inside viewport
       const padding = 12;
