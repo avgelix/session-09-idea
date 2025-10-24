@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Dashboards placeholder image">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0%" stop-color="#7be4d6"/>
+      <stop offset="100%" stop-color="#7a6bff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#07102a"/>
+  <rect x="48" y="48" width="1104" height="704" rx="14" fill="url(#g2)" opacity="0.12"/>
+  <g fill="#eaf2ff" font-family="Inter, Arial, sans-serif">
+    <text x="90" y="140" font-size="44" font-weight="700">Dashboards — Sample Screenshot</text>
+    <text x="90" y="200" font-size="20" fill="#9aa4b2">Placeholder image for charts & visualizations</text>
+  </g>
+  <g transform="translate(90,260)" fill="#0b1220">
+    <rect x="0" y="0" width="520" height="220" rx="10" fill="#0f1724" stroke="#ffffff1a"/>
+    <rect x="540" y="0" width="520" height="220" rx="10" fill="#0f1724" stroke="#ffffff1a"/>
+  </g>
+</svg>

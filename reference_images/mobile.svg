@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Mobile placeholder image">
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#7be4d6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#07102a"/>
+  <rect x="48" y="48" width="1104" height="704" rx="14" fill="url(#g3)" opacity="0.12"/>
+  <g fill="#eaf2ff" font-family="Inter, Arial, sans-serif">
+    <text x="90" y="140" font-size="44" font-weight="700">Mobile — Sample Screenshot</text>
+    <text x="90" y="200" font-size="20" fill="#9aa4b2">Placeholder image for mobile interaction patterns</text>
+  </g>
+  <g transform="translate(90,260)">
+    <rect x="0" y="0" width="160" height="320" rx="18" fill="#0f1724" stroke="#ffffff1a"/>
+    <rect x="220" y="0" width="160" height="320" rx="18" fill="#0f1724" stroke="#ffffff1a"/>
+    <rect x="440" y="0" width="160" height="320" rx="18" fill="#0f1724" stroke="#ffffff1a"/>
+  </g>
+</svg>
