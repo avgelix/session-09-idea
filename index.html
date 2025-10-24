@@ -11,15 +11,23 @@
 </head>
 <body>
   <header class="site-header" role="banner">
-    <div class="container">
-      <h1 class="brand"><span class="logo">AP</span> <span class="name">Angela Petrone</span></h1>
-      <nav aria-label="Main navigation">
+    <div class="container header-row">
+      <div class="brand-wrap">
+        <h1 class="brand"><span class="logo">AP</span> <span class="name">Angela Petrone</span></h1>
+        <p class="eyebrow small muted">Product Designer · MS HCI</p>
+      </div>
+
+      <nav aria-label="Primary navigation" class="nav-wrap">
         <ul class="nav">
           <li><a href="#about">About</a></li>
           <li><a href="#work">Work</a></li>
-          <li><a href="#viz">Data Viz</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="cta-group">
+          <a class="btn ghost small" href="/resume-Angela-Petrone.pdf" download>Resume</a>
+          <a class="btn primary small" href="#contact">Hire me</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -111,32 +119,38 @@
 
       <div class="projects-grid">
         <article class="card project-card">
-          <div class="card-media" aria-hidden="true">Onboard</div>
+          <a class="card-media" href="work/onboarding.html" aria-hidden="false">
+            <img src="images/onboard.svg" alt="Onboarding thumbnail">
+          </a>
           <div class="card-body">
-            <h4>Improving onboarding flow</h4>
+            <h4><a href="work/onboarding.html">Improving onboarding flow</a></h4>
             <p class="muted">Reduced time-to-first-value with a research-led redesign, A/B tested and shipped.</p>
             <p class="card-tags">Research · UX · Prototyping</p>
-            <a class="card-link" href="#">Read case study</a>
+            <a class="card-link" href="work/onboarding.html">Read case study →</a>
           </div>
         </article>
 
         <article class="card project-card">
-          <div class="card-media" aria-hidden="true">Dash</div>
+          <a class="card-media" href="work/dashboards.html" aria-hidden="false">
+            <img src="images/dash.svg" alt="Dashboards thumbnail">
+          </a>
           <div class="card-body">
-            <h4>Designing accessible dashboards</h4>
+            <h4><a href="work/dashboards.html">Designing accessible dashboards</a></h4>
             <p class="muted">Created an accessible component library and redesigned analytics flows for clarity and scale.</p>
             <p class="card-tags">Accessibility · Design System · Data Viz</p>
-            <a class="card-link" href="#">Read case study</a>
+            <a class="card-link" href="work/dashboards.html">Read case study →</a>
           </div>
         </article>
 
         <article class="card project-card">
-          <div class="card-media" aria-hidden="true">Mobile</div>
+          <a class="card-media" href="work/mobile.html" aria-hidden="false">
+            <img src="images/mobile.svg" alt="Mobile thumbnail">
+          </a>
           <div class="card-body">
-            <h4>Mobile app interaction patterns</h4>
+            <h4><a href="work/mobile.html">Mobile app interaction patterns</a></h4>
             <p class="muted">Defined consistent mobile patterns and motion language across native apps.</p>
             <p class="card-tags">Interaction · Motion · Prototyping</p>
-            <a class="card-link" href="#">Read case study</a>
+            <a class="card-link" href="work/mobile.html">Read case study →</a>
           </div>
         </article>
       </div>
