@@ -4,13 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Angela Petrone — Product Designer</title>
+  <!-- Modern fonts similar to contemporary portfolios -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="Angela Petrone — Product Designer. MA in Human-Computer Interaction. Portfolio, skills, and contact." />
+  <meta name="description" content="Angela Petrone — Product Designer. M.S. in Human-Computer Interaction. Portfolio, skills, and contact." />
 </head>
 <body>
   <header class="site-header" role="banner">
     <div class="container">
-      <h1 class="brand">Angela Petrone</h1>
+      <h1 class="brand"><span class="logo">AP</span> <span class="name">Angela Petrone</span></h1>
       <nav aria-label="Main navigation">
         <ul class="nav">
           <li><a href="#about">About</a></li>
@@ -31,7 +33,7 @@
           <p class="lead">I design human-centred digital products that balance user needs, business goals, and technical constraints. I focus on research-led interfaces, intuitive interactions, and accessible experiences.</p>
           <p class="actions">
             <a class="btn primary" href="#work">View portfolio</a>
-            <a class="btn" href="/resume-Angela-Petrone.pdf" download>Download resume</a>
+            <a class="btn ghost" href="/resume-Angela-Petrone.pdf" download>Download resume</a>
           </p>
         </div>
 
@@ -45,6 +47,16 @@
           </ul>
         </aside>
       </div>
+      <!-- soft decorative waves for a modern look -->
+      <svg class="hero-deco" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0%" stop-color="rgba(255,120,120,0.06)" />
+            <stop offset="100%" stop-color="rgba(98,90,255,0.06)" />
+          </linearGradient>
+        </defs>
+        <path d="M0,40 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="url(#g1)"></path>
+      </svg>
     </section>
 
     <section id="about" class="container section">
