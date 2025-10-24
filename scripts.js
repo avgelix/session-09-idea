@@ -152,7 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // small helper to trigger a gentle pulse on an element
-export function pulse(el, ms = 600) {
+function pulse(el, ms = 600) {
   if (!el) return;
   el.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}], {duration: ms, easing:'ease-in-out'});
 }
+// expose as a global helper so other scripts (or dev console) can call it
+window.pulse = pulse;
